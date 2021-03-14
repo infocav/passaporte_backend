@@ -249,7 +249,7 @@ routes.get('/venda/pedidos/incompletos/:id', VendaController.listarPedidosIncomp
 
 
 
-
+routes.get('/teste',  (req, res) => res.json({ msg: 'FUNCIONANDO.....' }))
 
 
 

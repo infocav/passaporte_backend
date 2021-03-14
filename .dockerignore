@@ -1,0 +1,8 @@
+arquivos_e_docs
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+TODO
+.git
+.gitignore
