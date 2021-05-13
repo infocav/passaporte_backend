@@ -13,6 +13,7 @@ module.exports = {
             }
         );
         return res.json(caixas);
+        // return res.json({'MSG':true});
     },
 
     async caixa(req, res) {
@@ -24,16 +25,16 @@ module.exports = {
                 where: {
                     id_caixa: {
                         [Op.col]: 'Caixa.id'
-
                     },
                     data_fechamento: null
-
-
                 }
             },
             where: { id: id }
 
         });
+
+        console.log('BUSCANDO INFORMAÇOES DO CAIXA: ',  caixa);
+
         return res.json(caixa);
     },
 

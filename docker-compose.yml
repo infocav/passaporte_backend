@@ -1,8 +1,0 @@
-version: "3.2"
-services: 
-  passaporte_backend:
-    build: .
-    ports:
-    - 3333:3333
-
-    
