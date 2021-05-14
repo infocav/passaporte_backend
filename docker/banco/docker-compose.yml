@@ -6,7 +6,7 @@ services:
         ports:
         - 5432:5432
         volumes:
-        - /home/ciceroavmelo/Projetos/Passaporte/banco:/var/lib/postgresql/data/:rw
+        - ../../../banco:/var/lib/postgresql/data/:rw
 #        - /opt/gatenoc/docker/secrets:/run/secrets:ro
         environment:
         - POSTGRES_PASSWORD=guloso
