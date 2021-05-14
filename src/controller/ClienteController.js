@@ -10,7 +10,12 @@ module.exports = {
         // console.log("CLIENTES: ", req.query.offset);
         const clientes = await Cliente.findAndCountAll({
             include: {
-                model: contasCliente
+                model: contasCliente,
+                required: false,
+                where: 
+                {
+                    status: true 
+                },
             },
             order: [['id', 'ASC']],
             limit: 50,
