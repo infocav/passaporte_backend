@@ -41,8 +41,10 @@ module.exports = {
         const id = req.params.id;
 
         const vendas = await Venda.findAll({
-            include: [Formas_pagamento, Cliente, {
-
+            include: [Formas_pagamento, {
+                model: Cliente,
+                required: false,
+            }, {
                 model: itensVenda,
                 include: [Produto, Molho,
                     {
@@ -57,7 +59,6 @@ module.exports = {
                             }
                         },
                         include: [Adicionais]
-
                     }]
             }],
             where: {
