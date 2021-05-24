@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   contasCliente.associate = function (models) {
     // associations can be defined here
-    contasCliente.hasMany(models.contasMovimentacao, { foreignKey: 'contaId' });
+    // contasCliente.hasMany(models.contasMovimentacao, { foreignKey: 'contaId' }); //RETIRAR
+    contasCliente.hasMany(models.faturaCliente, { foreignKey: 'contaId'});
     contasCliente.belongsTo(models.Cliente, { foreignKey: 'clienteId', targetKey: 'id' });
 
 
