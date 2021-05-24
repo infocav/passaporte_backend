@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   faturaCliente.associate = function(models) {
     // associations can be defined here
     faturaCliente.belongsTo(models.contasCliente, { foreignKey: 'contaId', targetKey: 'id' });
+    faturaCliente.hasMany(models.movimentacaoFatura, { foreignKey: 'faturaId'});
+
 
   };
   return faturaCliente;

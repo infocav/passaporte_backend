@@ -5,6 +5,8 @@ const { contasMovimentacao } = require('../models');
 const { Venda } = require('../models');
 const { Cliente } = require('../models/');
 const { faturaCliente} = require('../models');
+const { movimentacaoFatura } = require('../models');
+
 
 module.exports = {
 
@@ -12,7 +14,16 @@ module.exports = {
         const contas = await contasCliente.findAll({
             include: [Cliente, {
                 model:faturaCliente,
-                required:false
+                required:false,
+                where:{
+                    data_fechamento: {
+                        [Op.is]:null
+                    }
+                },
+                include: [{
+                    model: movimentacaoFatura,
+                    required: false                   
+                }]
             }],
             where: {
                 clienteId: {
@@ -105,10 +116,19 @@ module.exports = {
                 },
 
             },
-            include: {
+            include: { 
                 // model: contasMovimentacao,
                 model: faturaCliente,
                 required: false,
+                where:{
+                    data_fechamento: {
+                        [Op.is]:null
+                    }
+                },
+                include: [{
+                    model: movimentacaoFatura,
+                    required: false                   
+                }]
                 // include: [{
                 //     model: Venda,
                     // through: {
