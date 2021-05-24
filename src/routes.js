@@ -13,6 +13,8 @@ const FormasPagamento = require('./controller/FormasPagamentoController');
 const ContasClienteController = require('./controller/ContaController');
 const ContaMovimentacaoController = require("./controller/ContaMovimentacaoController");
 const ConfiguracaoController = require('./controller/ConfiguracaoController');
+const FaturaController = require('./controller/FaturaController');
+const MovimentacaoController = require('./controller/MovimentacaoController');
 
 var builder = require('botbuilder');
 
@@ -246,6 +248,22 @@ routes.get('/venda/entregas/abertas/:id', VendaController.listarEntregasAbertas)
 routes.get('/venda/mesas/abertas/:id', VendaController.listarMesasAbertas);
 routes.get('/venda/viajem/abertas/:id', VendaController.listarViajemAbertas);
 routes.get('/venda/pedidos/incompletos/:id', VendaController.listarPedidosIncompletos);
+
+
+//Fatura
+routes.get('/fatura/all', FaturaController.faturas);
+// routes.get('/fatura/:id', FaturaController.fatura);
+// routes.post('/fatura/register', FaturaController.register);
+// routes.post('/fatura/update', FaturaController.update);
+// routes.post('/fatura/delete', FaturaController.delete);
+
+//MovimentacaoFatura
+routes.get('/fatura/movimentacao/all', MovimentacaoController.movimentacaoFaturas);
+routes.post('/fatura/movimentacao/registrar', MovimentacaoController.registrarMovimentacao);
+// routes.get('/fatura/:id', FaturaController.fatura);
+// routes.post('/fatura/register', FaturaController.register);
+// routes.post('/fatura/update', FaturaController.update);
+// routes.post('/fatura/delete', FaturaController.delete);
 
 
 
