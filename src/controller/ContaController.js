@@ -3,29 +3,45 @@ const { Op } = require('sequelize');
 const sequelize = require('sequelize');
 const { contasMovimentacao } = require('../models');
 const { Venda } = require('../models');
-const { Cliente } = require('../models/')
+const { Cliente } = require('../models/');
+const { faturaCliente} = require('../models');
 
 module.exports = {
+
     async contas(req, res) {
         const contas = await contasCliente.findAll({
             include: [Cliente, {
-                model: contasMovimentacao,
-                required: false,
-                include: [{
-                    model: Venda,
-
-                }]
+                model:faturaCliente,
+                required:false
             }],
             where: {
                 clienteId: {
                     [Op.not]: null
                 }
             },
-
             order: [['id', 'ASC']]
         });
         return res.json(contas);
     },
+    // async contas(req, res) {
+    //     const contas = await contasCliente.findAll({
+    //         include: [Cliente, {
+    //             model: contasMovimentacao,
+    //             required: false,
+    //             include: [{
+    //                 model: Venda,
+
+    //             }]
+    //         }],
+    //         where: {
+    //             clienteId: {
+    //                 [Op.not]: null
+    //             }
+    //         },
+    //         order: [['id', 'ASC']]
+    //     });
+    //     return res.json(contas);
+    // },
 
     async teste(req, res) {
         const contas = await contasCliente.findAll({
@@ -90,20 +106,15 @@ module.exports = {
 
             },
             include: {
-                model: contasMovimentacao,
+                // model: contasMovimentacao,
+                model: faturaCliente,
                 required: false,
-                where: {
-                    pagamentoId: {
-                        [Op.eq]: null
-                    },
-
-                },
-                include: [{
-                    model: Venda,
+                // include: [{
+                //     model: Venda,
                     // through: {
                     //     attributes: ['id', 'vl_total'],
                     // }
-                }]
+                // }]
             },
             order: [['id', 'ASC']]
         });
